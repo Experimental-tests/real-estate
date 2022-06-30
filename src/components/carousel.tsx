@@ -8,7 +8,7 @@ const Carousel: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
 
   return (
     <div className="relative -mx-6 -my-6">
-      <div className="absolute top-0 -left-2 w-6 bg-white z-50 flex items-center   bottom-0 ">
+      <div className="absolute top-6 -left-2 w-6 bg-white z-10 flex items-center   bottom-0 ">
         <button
           onClick={async () => {
             // catch animation errors when user clicks next and the animation is still not finished
@@ -21,7 +21,7 @@ const Carousel: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
           <PrevIcon />
         </button>
       </div>
-      <div className="absolute top-0 -right-2 w-6 bg-white z-50 flex items-center justify-end  bottom-0 ">
+      <div className="absolute top-6 -right-2 w-6 bg-white z-10 flex items-center justify-end  bottom-0 ">
         <button
           onClick={async () => {
             // catch animation errors when user clicks next and the animation is still not finished
