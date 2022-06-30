@@ -73,7 +73,11 @@ const Home: NextPage<Props> = ({ details, suggestions }) => {
         </Carousel>
       </div>
       <Card direction="horizontal" className="gap-x-6 mt-8 py-5 px-4">
-        <img src="/big-picture.png" alt="" />
+        <img
+          src="/big-picture.png"
+          alt=""
+          className="object-cover w-[270px] rounded-lg h-full"
+        />
         <div className="flex-1">
           <div className="flex justify-end items-center space-x-1 ">
             <IconButton>
