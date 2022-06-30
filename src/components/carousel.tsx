@@ -1,19 +1,11 @@
-import { forwardRef, useEffect, useRef, useState } from 'react'
+import { forwardRef, useRef } from 'react'
 import Flicking from '@egjs/react-flicking'
 import '@egjs/react-flicking/dist/flicking.css'
 import { NextICon, PrevIcon } from 'ui/icons'
 
 const Carousel: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   const ref = useRef<any>()
-  const [mounted, setMounted] = useState(false)
 
-  useEffect(() => {
-    // run this component only the client side
-    setMounted(true)
-  }, [])
-
-  // run this component only the client side
-  if (!mounted) return null
   return (
     <div className="relative -mx-6 -my-6">
       <div className="absolute top-0 -left-2 w-6 bg-white z-50 flex items-center   bottom-0 ">

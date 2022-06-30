@@ -2,7 +2,6 @@ import Card from 'components/card'
 import Carousel, { CarouselItem } from 'components/carousel'
 import Chip from 'components/chip'
 import IconButton from 'components/icon-button'
-import { getDetails, getSuggestions } from 'lib'
 import type { GetServerSideProps, NextPage } from 'next'
 import EstateCard from 'ui/estate-card'
 import {
@@ -14,10 +13,36 @@ import {
 } from 'ui/icons'
 import InformationLabel from 'ui/information'
 import Layout from 'ui/layout'
+import axios from 'axios'
 
 type Props = {
-  details: Awaited<ReturnType<typeof getDetails>>
-  suggestions: Awaited<ReturnType<typeof getSuggestions>>
+  details: {
+    building: {
+      image: string
+      name: string
+      address: string
+      type: string
+      class: string
+      subMarket: string
+      owner: string
+      rsf: string
+      plateSize: string
+      yearBuilt: string
+      floors: number
+      status: 'existing' | 'construction' | 'proposed'
+    }
+    parking: {
+      type: string
+      ratio: string
+      cost: string
+    }
+  }
+  suggestions: {
+    image: string
+    name: string
+    address: string
+    status: 'existing' | 'construction' | 'proposed'
+  }[]
 }
 
 const Home: NextPage<Props> = ({ details, suggestions }) => {
@@ -47,7 +72,7 @@ const Home: NextPage<Props> = ({ details, suggestions }) => {
           ))}
         </Carousel>
       </div>
-      <Card direction="horizontal" className="gap-x-6 mt-8 py-5 px-4 flex-1">
+      <Card direction="horizontal" className="gap-x-6 mt-8 py-5 px-4">
         <img src="/big-picture.png" alt="" />
         <div className="flex-1">
           <div className="flex justify-end items-center space-x-1 ">
@@ -68,12 +93,12 @@ const Home: NextPage<Props> = ({ details, suggestions }) => {
             <h3 className="text-4xl tracking-tight font-bold">
               {details.building.name}
             </h3>
-            <div className="space-x-4 mt-3 flex items-center">
+            <div className="space-x-4 mt-2 flex items-center">
               <PinIcon size="large" />
               <span>{details.building.address}</span>
             </div>
-            <div className="flex items-center space-x-6">
-              <h4 className="text-2xl mt-5 mb-3 tracking-tight font-bold">
+            <div className="flex items-baseline space-x-4">
+              <h4 className="text-2xl mt-3 mb-1 tracking-tight font-bold">
                 Building Information
               </h4>
               <Chip colorVariant={details.building.status}>
@@ -117,7 +142,7 @@ const Home: NextPage<Props> = ({ details, suggestions }) => {
               <span>: {details.building.floors}</span>
             </InformationLabel>
 
-            <h4 className="text-2xl mt-5 mb-3 tracking-tight font-bold">
+            <h4 className="text-2xl mt-4 mb-2 tracking-tight font-bold">
               Parking
             </h4>
 
@@ -143,9 +168,14 @@ const Home: NextPage<Props> = ({ details, suggestions }) => {
 
 const getServerSideProps: GetServerSideProps = async () => {
   const [suggestions, details] = await Promise.all([
-    getSuggestions(),
-    getDetails('1'),
+    axios
+      .get('https://mocki.io/v1/0861a817-722a-41fb-8beb-757af75da0fd')
+      .then(({ data }) => data),
+    axios
+      .get('https://mocki.io/v1/33e4fc59-1fe0-4946-b925-95a8adb75c13')
+      .then(({ data }) => data),
   ])
+
   return {
     props: { suggestions, details },
   }
