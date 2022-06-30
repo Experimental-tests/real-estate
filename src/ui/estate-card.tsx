@@ -15,7 +15,7 @@ const EstateCard: React.FC<
     <Card {...props}>
       <img src={image} alt="real estate" />
       <h3 className="font-bold tracking-tight line-clamp-1">{name}</h3>
-      <div className="flex space-x-1 items-center">
+      <div className="flex space-x-1 items-baseline">
         <PinIcon />
         <span className="line-clamp-1 text-sm">{address}</span>
       </div>

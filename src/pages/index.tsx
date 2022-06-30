@@ -97,8 +97,8 @@ const Home: NextPage<Props> = ({ details, suggestions }) => {
               <PinIcon size="large" />
               <span>{details.building.address}</span>
             </div>
-            <div className="flex items-baseline space-x-4">
-              <h4 className="text-2xl mt-3 mb-1 tracking-tight font-bold">
+            <div className="flex items-baseline mb-2.5 space-x-4">
+              <h4 className="text-2xl mt-3 tracking-tight font-bold">
                 Building Information
               </h4>
               <Chip colorVariant={details.building.status}>
