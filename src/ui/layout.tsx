@@ -18,7 +18,7 @@ const Layout: React.FC<React.ComponentProps<'div'>> = ({ children }) => {
           className="object-cover w-[450px] 2xl:w-[600px] max-h-screen sticky top-0"
           alt="map"
         />
-        <div className="px-14 py-6 overflow-hidden flex flex-col">
+        <div className="px-16 py-6 overflow-hidden flex flex-col">
           {children}
         </div>
       </main>

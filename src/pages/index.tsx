@@ -1,5 +1,6 @@
 import Card from 'components/card'
 import Carousel, { CarouselItem } from 'components/carousel'
+import Chip from 'components/chip'
 import IconButton from 'components/icon-button'
 import { getDetails, getSuggestions } from 'lib'
 import type { GetServerSideProps, NextPage } from 'next'
@@ -68,12 +69,17 @@ const Home: NextPage<Props> = ({ details, suggestions }) => {
               {details.building.name}
             </h3>
             <div className="space-x-4 mt-3 flex items-center">
-              <PinIcon />
+              <PinIcon size="large" />
               <span>{details.building.address}</span>
             </div>
-            <h4 className="text-2xl mt-5 mb-3 tracking-tight font-bold">
-              Building Information
-            </h4>
+            <div className="flex items-center space-x-6">
+              <h4 className="text-2xl mt-5 mb-3 tracking-tight font-bold">
+                Building Information
+              </h4>
+              <Chip colorVariant={details.building.status}>
+                {details.building.status}
+              </Chip>
+            </div>
             <InformationLabel>
               <span>Type</span>
               <span>: {details.building.type}</span>

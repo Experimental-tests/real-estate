@@ -8,7 +8,7 @@ const InformationLabel = forwardRef<
   return (
     <div
       ref={ref}
-      className={classNames('grid grid-cols-2 gap-x-4', className)}
+      className={classNames('grid grid-cols-[1fr_2fr] gap-x-4', className)}
       {...props}
     >
       {children}

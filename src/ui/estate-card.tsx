@@ -17,12 +17,10 @@ const EstateCard: React.FC<
       <h3 className="font-bold tracking-tight line-clamp-1">{name}</h3>
       <div className="flex space-x-1 items-center">
         <PinIcon />
-        <span className="line-clamp-1">{address}</span>
+        <span className="line-clamp-1 text-sm">{address}</span>
       </div>
       <div className="!mt-3">
-        <Chip colorVariant={status} className="capitalize">
-          {status}
-        </Chip>
+        <Chip colorVariant={status}>{status}</Chip>
       </div>
     </Card>
   )

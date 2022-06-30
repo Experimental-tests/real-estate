@@ -13,10 +13,10 @@ const PinIcon = ({ size = 'default' }: { size?: 'default' | 'large' }) => (
   <svg
     viewBox="0 0 8 10"
     className={classNames({
-      'min-w-[8px] w-[8px] min-h-[10px] h-[10px] inline-block':
+      'min-w-[10px] w-[10px] min-h-[12px] h-[12px] inline-block':
         size === 'default',
       'min-w-[14px] w-[14px] min-h-[18px] h-[18px] inline-block':
-        size === 'default',
+        size === 'large',
     })}
   >
     <path
